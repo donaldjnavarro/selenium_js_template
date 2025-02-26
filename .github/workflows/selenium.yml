@@ -22,4 +22,4 @@ jobs:
         echo HEADLESS=true >> .env
         cat .env
     - name: Run Selenium tests
-      run: node example.ts
+      run: node example.mjs

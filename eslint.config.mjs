@@ -14,6 +14,13 @@ export default [
       semi: 'warn'
     }
   },
+  {
+    settings: {
+      react: {
+        version: "detect"
+      }
+    }
+  },
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
 ];

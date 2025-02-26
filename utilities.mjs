@@ -18,12 +18,12 @@ import chrome from 'selenium-webdriver/chrome.js';
 export function getBrowser () {
   return process.env.BROWSER ?
     process.env.BROWSER.toUpperCase() :
-    'CHROME'
+    'CHROME';
 }
 
 export async function startBrowser (browserName = getBrowser()) {
   switch (browserName) {
-    case 'CHROME':
+    case 'CHROME': {
       /** Set Chrome-specific options */
       const options = new chrome.Options();
       if (process.env.HEADLESS?.toLowerCase() === 'true') {
@@ -34,6 +34,7 @@ export async function startBrowser (browserName = getBrowser()) {
         .forBrowser(Browser[getBrowser()])
         .setChromeOptions(options)
         .build();
+    }
     default:
       /** Start the browser instance based on generic configurations */
       return await new Builder()

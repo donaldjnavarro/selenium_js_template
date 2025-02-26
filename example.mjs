@@ -1,11 +1,17 @@
-const { assert } = require('console');
-const { Builder, Browser, By, Key, until } = require('selenium-webdriver');
-require('dotenv').config({ path: './.env' });
-const { startBrowser } = require('./utilities.ts');
+/**
+ * Example test
+ * 
+ * @module example
+ */
+import { assert } from 'console';
+import { By, Key, until } from 'selenium-webdriver';
+import dotenv from 'dotenv';
+dotenv.config({ path: './.env' });
+import { startBrowser } from './utilities.mjs';
 
 /** Test: Wikipedia website */
 ;(async function wikipedia_website() {
-  const driver = await startBrowser()
+  const driver = await startBrowser();
   try {
     await driver.get('https://www.wikipedia.org/');
     await driver.findElement(By.xpath('//input[@name = \'search\']')).sendKeys('webdriver', Key.RETURN);
@@ -38,6 +44,6 @@ const { startBrowser } = require('./utilities.ts');
   } catch (e) {
     console.log(e);
   } finally {
-    await driver.quit();
+    await driver?.quit();
   }
 }());

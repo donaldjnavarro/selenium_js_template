@@ -14,7 +14,7 @@
             ],
             "runtimeExecutable": "node",
             "runtimeArgs": [
-                "example.ts"
+                "example.mjs"
             ]
         }
     ]
