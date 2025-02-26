@@ -2,11 +2,11 @@
  * Custom utilities developed for this project
  */
 
-import { config } from 'dotenv'
-import process from 'process'
-config({ path: './.env' })
-import { Builder, Browser } from 'selenium-webdriver'
-import chrome from 'selenium-webdriver/chrome.js'
+import { config } from 'dotenv';
+import process from 'process';
+config({ path: './.env' });
+import { Builder, Browser } from 'selenium-webdriver';
+import chrome from 'selenium-webdriver/chrome.js';
 
 /**
  * Configure the current browser in the .env file
@@ -33,11 +33,11 @@ export async function startBrowser (browserName = getBrowser()) {
       return await new Builder()
         .forBrowser(Browser[getBrowser()])
         .setChromeOptions(options)
-        .build()
+        .build();
     default:
       /** Start the browser instance based on generic configurations */
       return await new Builder()
         .forBrowser(Browser[getBrowser()])
-        .build()
+        .build();
   }
 }
