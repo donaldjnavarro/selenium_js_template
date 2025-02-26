@@ -1,11 +1,11 @@
 const { assert } = require('console');
 const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
 require('dotenv').config({ path: './.env' });
-const { getBrowser } = require('./utilities.ts')
+const { startBrowser } = require('./utilities.ts')
 
 /** Test: Wikipedia website */
 ;(async function wikipedia_website() {
-  let driver = await new Builder().forBrowser(Browser[getBrowser()]).build()
+  const driver = await startBrowser()
   try {
     await driver.get('https://www.wikipedia.org/')
     await driver.findElement(By.xpath('//input[@name = \'search\']')).sendKeys('webdriver', Key.RETURN)
@@ -17,11 +17,10 @@ const { getBrowser } = require('./utilities.ts')
 })()
 
 /** Test: Selenium website */
-;(async function selenium_website() {
+;(async function selenium_website() {  
   let driver;
-  
   try {
-    driver = await new Builder().forBrowser(Browser.CHROME).build();
+    driver = await startBrowser()
     await driver.get('https://www.selenium.dev/selenium/web/web-form.html');
   
     assert(await driver.getTitle() === 'Web form')

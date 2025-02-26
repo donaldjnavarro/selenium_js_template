@@ -14,7 +14,7 @@
             ],
             "runtimeExecutable": "node",
             "runtimeArgs": [
-                "example_wikipedia.ts"
+                "example.ts"
             ]
         }
     ]
