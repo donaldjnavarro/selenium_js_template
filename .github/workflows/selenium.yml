@@ -34,4 +34,4 @@ jobs:
     - name: Install dependencies
       run: npm install eslint
     - name: Lint
-      run: npx eslint
+      run: npx eslint --max-warnings=0
