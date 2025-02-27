@@ -46,4 +46,4 @@ import { startBrowser } from './utilities.mjs';
   } finally {
     await driver?.quit();
   }
-}())
+}());
