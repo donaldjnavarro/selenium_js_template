@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  test:
+  selenium:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -23,3 +23,9 @@ jobs:
         cat .env
     - name: Run Selenium tests
       run: node example.mjs
+  lint:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - name: Lint
+      run: npx eslint
