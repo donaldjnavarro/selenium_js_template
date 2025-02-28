@@ -4,7 +4,8 @@
   "description": "A basic Selenium setup to jumpstart new projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint",
+    "test": "node example.mjs"
   },
   "repository": {
     "type": "git",
