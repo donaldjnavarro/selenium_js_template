@@ -1,6 +1,6 @@
 /**
  * Example test
- * 
+ *
  * @module example
  */
 import { assert } from 'console';
@@ -23,23 +23,23 @@ import { startBrowser } from './utilities.mjs';
 })()
 
 /** Test: Selenium website */
-;(async function selenium_website() {  
+;(async function selenium_website() {
   let driver;
   try {
     driver = await startBrowser();
     await driver.get('https://www.selenium.dev/selenium/web/web-form.html');
-  
+
     assert(await driver.getTitle() === 'Web form');
-  
+
     await driver.manage().setTimeouts({implicit: 500});
-  
-    let textBox = await driver.findElement(By.name('my-text'));
-    let submitButton = await driver.findElement(By.css('button'));
-  
+
+    const textBox = await driver.findElement(By.name('my-text'));
+    const submitButton = await driver.findElement(By.css('button'));
+
     await textBox.sendKeys('Selenium');
     await submitButton.click();
-  
-    let message = await driver.findElement(By.id('message'));
+
+    const message = await driver.findElement(By.id('message'));
     assert(await message.getText() === 'Received!');
   } catch (e) {
     console.log(e);
