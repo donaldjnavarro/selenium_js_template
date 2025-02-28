@@ -12,7 +12,7 @@ import chrome from 'selenium-webdriver/chrome.js';
  * Configure the current browser in the .env file
  * Default to Chrome
  * Standardize to upper case
- * 
+ *
  * @returns {string} Name of the browser to be used
  */
 export function getBrowser () {
