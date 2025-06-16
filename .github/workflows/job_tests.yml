@@ -1,0 +1,31 @@
+name: Test job
+
+on:
+  workflow_call:
+    inputs:
+      env_file:
+        required: false
+        type: string
+
+jobs:
+  test:
+    # Run on any branch during PR workflows, otherwise only run on main
+    if: github.event_name == 'pull_request' || github.event_name == 'push' || github.ref == 'refs/heads/main'
+
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo BROWSER=CHROME >> .env
+        echo HEADLESS=true >> .env
+        cat .env
+    - name: Run Selenium tests
+      run: node example.mjs
